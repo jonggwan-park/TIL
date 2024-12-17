@@ -1,10 +1,10 @@
 import pymc3 as pm
-import numpy as np
 
-with pm.Model() as model:
-    mu = pm.Normal('mu', mu=0, sd=1)
-    obs = pm.Normal('obs', mu=mu, sd=1, observed=np.random.randn(100))
-    trace = pm.sample(1000)
+if __name__ == '__main__':  # 추가된 부분
+    # PyMC3 모델 생성 예제
+    with pm.Model() as model:
+        mu = pm.Normal('mu', mu=0, sigma=1)  # 예시 변수
+        trace = pm.sample(1000)  # 샘플링 수행
+    
+    print("Sampling completed successfully!")
 
-pm.plot_posterior(trace)
-plt.show()
